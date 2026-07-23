@@ -76,30 +76,35 @@ Verificar
 
 function verificar(){
 
-let data=document.getElementById("data").value;
+    let data = document.getElementById("data").value;
 
-if(data==""){
-document.getElementById("resultado").innerHTML="Escolha uma data.";
-return;
-}
+    if(data==""){
+        document.getElementById("resultado").innerHTML =
+        "Escolha uma data.";
+        return;
+    }
 
-let nascimento=new Date(data);
-let hoje=new Date();
+    let partes = data.split("-");
 
-if(
-nascimento.getDate()==hoje.getDate() &&
-nascimento.getMonth()==hoje.getMonth()
-){
+    let diaNascimento = parseInt(partes[2]);
+    let mesNascimento = parseInt(partes[1]);
 
-document.getElementById("resultado").innerHTML=
-"🎉 Parabéns! Hoje é o seu aniversário!";
+    let hoje = new Date();
 
-}else{
+    let diaHoje = hoje.getDate();
+    let mesHoje = hoje.getMonth() + 1;
 
-document.getElementById("resultado").innerHTML=
-"😄 Hoje não é seu aniversário.";
+    if(diaNascimento === diaHoje && mesNascimento === mesHoje){
 
-}
+        document.getElementById("resultado").innerHTML =
+        "🎉 Parabéns! Hoje é o seu aniversário! 🥳";
+
+    }else{
+
+        document.getElementById("resultado").innerHTML =
+        "😊 Hoje não é seu aniversário.";
+
+    }
 
 }
 
